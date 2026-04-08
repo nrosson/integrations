@@ -5,6 +5,7 @@ import { PSHeader } from './PSHeader'
 const subnav = [
   { to: '/', label: 'Dashboard', end: true },
   { to: '/connections', label: 'Connections' },
+  { to: '/available', label: 'Available Integrations' },
   { to: '/registrations', label: 'App Registrations' },
   { to: '/users', label: 'Users' },
   { to: '/roles', label: 'Roles' },

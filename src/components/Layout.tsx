@@ -22,7 +22,7 @@ export function Layout() {
 
         {/* Page content */}
         <div className="flex-1 bg-gray-50 px-8 py-7">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-5">Connected Apps</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-5">Connected External Apps</h1>
 
           {/* Tab sub-nav */}
           <div className="flex border-b border-gray-200 mb-6 -mx-8 px-8">

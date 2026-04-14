@@ -3,12 +3,12 @@ import { PSSidebar } from './PSSidebar'
 import { PSHeader } from './PSHeader'
 
 const subnav = [
-  { to: '/connections', label: 'Connections' },
-  { to: '/available', label: 'Available Apps' },
-  { to: '/registrations', label: 'App Registrations' },
+  { to: '/care/users', label: 'Users' },
+  { to: '/care/roles', label: 'Roles' },
+  { to: '/care/audit', label: 'Audit Log' },
 ]
 
-export function Layout() {
+export function CareLayout() {
   return (
     <div className="flex min-h-screen bg-white">
       <PSSidebar />
@@ -18,7 +18,13 @@ export function Layout() {
 
         {/* Page content */}
         <div className="flex-1 bg-gray-50 px-8 py-7 flex flex-col">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-5">Connected Apps</h1>
+          <div className="flex items-center gap-3 mb-5">
+            <Link to="/connections" className="text-sm text-gray-400 hover:text-purple-600 transition-colors">
+              ← Connected Apps
+            </Link>
+            <span className="text-gray-300">/</span>
+            <h1 className="text-2xl font-semibold text-gray-900">CARE</h1>
+          </div>
 
           {/* Tab sub-nav */}
           <div className="flex border-b border-gray-200 mb-6 -mx-8 px-8">
@@ -41,16 +47,6 @@ export function Layout() {
 
           <div className="flex-1">
             <Outlet />
-          </div>
-
-          {/* CARE link */}
-          <div className="flex justify-end mt-8">
-            <Link
-              to="/care"
-              className="text-xs font-semibold tracking-widest text-gray-400 hover:text-purple-600 transition-colors uppercase"
-            >
-              CARE
-            </Link>
           </div>
         </div>
       </div>

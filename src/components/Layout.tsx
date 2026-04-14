@@ -11,7 +11,7 @@ export function Layout() {
         <PSHeader />
 
         <div className="flex-1 bg-gray-50 px-8 py-7 flex flex-col">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-5">Connected Apps</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-5">Integrations</h1>
 
           <div className="flex-1">
             <Outlet />

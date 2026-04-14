@@ -11,6 +11,8 @@ export interface IntegrationDef {
   externalIdLabel: string
   /** The registration name used to look up the connection in mock data */
   registrationName: string
+  /** Override the default CTA button label */
+  ctaLabel?: string
   docsUrl?: string
 }
 
@@ -26,6 +28,7 @@ export const integrations: IntegrationDef[] = [
     status: 'available',
     externalIdLabel: 'Realm ID',
     registrationName: 'QuickBooks Accounting',
+    ctaLabel: 'Connect',
     docsUrl: '#',
   },
   {
@@ -39,7 +42,21 @@ export const integrations: IntegrationDef[] = [
     status: 'available',
     externalIdLabel: 'Realm ID',
     registrationName: 'QuickBooks Payments',
+    ctaLabel: 'Connect',
     docsUrl: '#',
+  },
+  {
+    id: 'qbd',
+    name: 'QuickBooks Desktop',
+    provider: 'Intuit',
+    description: 'Sync payroll data with QuickBooks Desktop via a local web connector. Supports Pro, Premier, and Enterprise editions.',
+    category: 'Accounting',
+    logo: 'QB',
+    logoColor: 'bg-[#2CA01C] text-white',
+    status: 'available',
+    externalIdLabel: 'Company File ID',
+    registrationName: 'QuickBooks Desktop',
+    ctaLabel: 'Configure',
   },
   {
     id: 'xero',
@@ -49,7 +66,7 @@ export const integrations: IntegrationDef[] = [
     category: 'Accounting',
     logo: 'XR',
     logoColor: 'bg-[#1AB4D7] text-white',
-    status: 'coming_soon',
+    status: 'available',
     externalIdLabel: 'Tenant ID',
     registrationName: 'Xero',
   },
@@ -61,7 +78,7 @@ export const integrations: IntegrationDef[] = [
     category: 'HR & Benefits',
     logo: 'GS',
     logoColor: 'bg-[#F45D48] text-white',
-    status: 'coming_soon',
+    status: 'available',
     externalIdLabel: 'Company ID',
     registrationName: 'Gusto',
   },
@@ -73,7 +90,7 @@ export const integrations: IntegrationDef[] = [
     category: 'HR & Benefits',
     logo: 'AD',
     logoColor: 'bg-[#D42428] text-white',
-    status: 'coming_soon',
+    status: 'available',
     externalIdLabel: 'Company Code',
     registrationName: 'ADP',
   },
@@ -85,7 +102,7 @@ export const integrations: IntegrationDef[] = [
     category: 'Verification',
     logo: 'EQ',
     logoColor: 'bg-[#003087] text-white',
-    status: 'coming_soon',
+    status: 'available',
     externalIdLabel: 'Employer ID',
     registrationName: 'Equifax',
   },

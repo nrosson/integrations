@@ -4,6 +4,7 @@ import { AlertTriangle } from 'lucide-react'
 import { integrations } from '../data/integrations'
 import { connections as initialConnections } from '../data/mock'
 import { StatusBadge } from '../components/StatusBadge'
+import { IntegrationLogo } from '../components/IntegrationLogo'
 import { QBOAccountingSlot } from '../slots/QBOAccountingSlot'
 import type { Connection } from '../data/mock'
 
@@ -48,9 +49,7 @@ export function ManageConnection() {
         {/* Top row: logo + name + status */}
         <div className="flex items-start justify-between gap-4 mb-4">
           <div className="flex items-center gap-4">
-            <div className={`w-12 h-12 rounded flex items-center justify-center text-sm font-bold shrink-0 ${integration.logoColor}`}>
-              {integration.logo}
-            </div>
+            <IntegrationLogo integrationId={integration.id} size={48} />
             <div>
               <h2 className="text-base font-semibold text-gray-900">{integration.name}</h2>
               <p className="text-xs text-gray-600">{integration.provider}</p>

@@ -6,11 +6,20 @@ import { connections as initialConnections } from '../data/mock'
 import { StatusBadge } from '../components/StatusBadge'
 import { IntegrationLogo } from '../components/IntegrationLogo'
 import { QBOAccountingSlot } from '../slots/QBOAccountingSlot'
+import { QBOPayrollSlot } from '../slots/QBOPayrollSlot'
 import type { Connection } from '../data/mock'
 
-/** Registry of slot components keyed by integration ID. */
-const slots: Record<string, React.ComponentType> = {
-  'qbo-accounting': QBOAccountingSlot,
+interface SlotTab {
+  label: string
+  component: React.ComponentType
+}
+
+/** Registry of tabbed slot components keyed by integration ID. */
+const slots: Record<string, SlotTab[]> = {
+  'qbo-accounting': [
+    { label: 'Payroll', component: QBOPayrollSlot },
+    { label: 'Accounting', component: QBOAccountingSlot },
+  ],
 }
 
 export function ManageConnection() {
@@ -23,12 +32,14 @@ export function ManageConnection() {
     : undefined
 
   const [connection, setConnection] = useState<Connection | undefined>(initial)
+  const [activeTab, setActiveTab] = useState(0)
 
   if (!integration) {
     return <div className="p-8 text-sm text-gray-600">Integration not found.</div>
   }
 
-  const SlotComponent = slots[integration.id] ?? null
+  const slotTabs = slots[integration.id] ?? null
+  const ActiveSlot = slotTabs ? slotTabs[activeTab]?.component : null
 
   function disconnect() {
     if (!confirm(`Disconnect ${integration!.name}? The customer will need to re-authorize to reconnect.`)) return
@@ -103,11 +114,27 @@ export function ManageConnection() {
             <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Integration Configuration</p>
             <p className="text-xs text-gray-600 mt-0.5">{integration.name}</p>
           </div>
-          <span className="text-xs text-gray-600 font-mono">slot</span>
         </div>
 
-        {SlotComponent ? (
-          <SlotComponent />
+        {slotTabs ? (
+          <>
+            <div className="flex gap-1 border-b border-gray-200 mb-5">
+              {slotTabs.map((tab, i) => (
+                <button
+                  key={tab.label}
+                  onClick={() => setActiveTab(i)}
+                  className={`px-4 py-2 text-xs font-medium transition-colors border-b-2 -mb-px ${
+                    activeTab === i
+                      ? 'border-purple-600 text-purple-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            {ActiveSlot && <ActiveSlot />}
+          </>
         ) : (
           <div className="flex flex-col items-center justify-center py-10 text-center">
             <AlertTriangle size={20} className="text-gray-600 mb-2" />

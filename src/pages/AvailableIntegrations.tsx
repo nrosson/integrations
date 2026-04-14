@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2, ExternalLink, Search } from 'lucide-react'
+import { CheckCircle2, MinusCircle, ExternalLink, Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { integrations } from '../data/integrations'
 import { connections } from '../data/mock'
@@ -14,6 +14,10 @@ export function AvailableIntegrations() {
 
   const activeConnections = new Set(
     connections.filter(c => c.status === 'Active').map(c => c.registration)
+  )
+
+  const disconnectedConnections = new Set(
+    connections.filter(c => c.status === 'Disconnected').map(c => c.registration)
   )
 
   const filtered = integrations.filter(integration => {
@@ -97,8 +101,8 @@ export function AvailableIntegrations() {
             <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">{category}</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
               {filtered.filter(i => i.category === category).map(integration => {
-                const isConnect = integration.ctaLabel === 'Connect'
                 const connected = activeConnections.has(integration.registrationName)
+                const disconnected = !connected && disconnectedConnections.has(integration.registrationName)
 
                 return (
                   <div
@@ -110,43 +114,52 @@ export function AvailableIntegrations() {
                         <IntegrationLogo integrationId={integration.id} size={40} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <p className="text-sm font-semibold text-gray-800">{integration.name}</p>
-                          {connected && (
+                        <p className="text-sm font-semibold text-gray-800">{integration.name}</p>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          {connected ? (
                             <span className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
                               <CheckCircle2 size={11} />
                               Connected
                             </span>
+                          ) : disconnected ? (
+                            <span className="flex items-center gap-1 text-xs text-amber-600 font-medium">
+                              <MinusCircle size={11} />
+                              Disconnected
+                            </span>
+                          ) : (
+                            <span className="flex items-center gap-1 text-xs text-gray-500 font-medium">
+                              <MinusCircle size={11} />
+                              Not Connected
+                            </span>
                           )}
+                          <span className="text-gray-300">·</span>
+                          <p className="text-xs text-gray-600">{integration.provider}</p>
                         </div>
-                        <p className="text-xs text-gray-600">{integration.provider}</p>
                       </div>
                     </div>
 
                     <p className="text-xs text-gray-600 leading-relaxed flex-1">{integration.description}</p>
 
                     <div className="flex items-center gap-2">
-                      {isConnect && !connected ? (
-                        <button className="flex-1 px-3 py-1.5 text-xs font-medium bg-purple-600 hover:bg-purple-700 text-white rounded transition-colors">
-                          Connect
-                        </button>
-                      ) : (
+                      {connected ? (
                         <Link
                           to={`/manage/${integration.id}`}
-                          className="flex-1 px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-600 rounded hover:bg-gray-50 transition-colors text-center"
+                          className="flex-1 max-w-[180px] px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-600 rounded hover:bg-gray-50 transition-colors text-center"
                         >
-                          Configure
+                          {integration.ctaLabel ?? 'Configure'}
                         </Link>
+                      ) : (
+                        <button className="flex-1 max-w-[180px] px-3 py-1.5 text-xs font-medium border border-purple-600 text-purple-600 rounded hover:bg-purple-50 transition-colors">
+                          {disconnected ? 'Reconnect' : (integration.ctaLabel ?? 'Connect')}
+                        </button>
                       )}
-                      {integration.docsUrl && (
-                        <a
-                          href={integration.docsUrl}
-                          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-600 rounded hover:bg-gray-50 transition-colors"
-                        >
-                          <ExternalLink size={11} />
-                          Docs
-                        </a>
-                      )}
+                      <a
+                        href={integration.docsUrl ?? '#'}
+                        className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-600 rounded hover:bg-gray-50 transition-colors"
+                      >
+                        Learn More
+                        <ExternalLink size={11} />
+                      </a>
                     </div>
                   </div>
                 )

@@ -73,6 +73,7 @@ export const connections: Connection[] = [
   { id: '6', companyId: 623, companyName: 'Pinecrest Auto Parts', provider: 'Intuit', registration: 'QuickBooks Payments', status: 'Disconnected', lastRefreshed: '2026-04-01T16:45:00Z', expiresAt: '2026-04-01T17:45:00Z', realmId: '0000111122223333444' },
   { id: '7', companyId: 731, companyName: 'Lakewood Family Clinic', provider: 'Intuit', registration: 'QuickBooks Accounting', status: 'Active', lastRefreshed: '2026-04-08T09:30:00Z', expiresAt: '2026-04-08T10:30:00Z', realmId: '7777888899990000111' },
   { id: '8', companyId: 845, companyName: 'Ironclad Fabrication', provider: 'Intuit', registration: 'QuickBooks Accounting', status: 'Failed', lastRefreshed: '2026-04-07T22:10:00Z', expiresAt: '2026-04-07T23:10:00Z', realmId: '3333444455556666777' },
+  { id: '9', companyId: 101, companyName: 'Acme Corp', provider: 'Xero', registration: 'Xero', status: 'Disconnected', lastRefreshed: '2026-03-20T11:00:00Z', expiresAt: '2026-03-20T12:00:00Z', realmId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' },
 ]
 
 export const registrations: AppRegistration[] = [

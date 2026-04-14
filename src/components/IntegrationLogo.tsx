@@ -53,14 +53,35 @@ export function EquifaxLogo({ size = 40, className = '' }: LogoProps) {
   )
 }
 
+export function BambooHRLogo({ size = 40, className = '' }: LogoProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <rect width="40" height="40" rx="8" fill="#73C41D"/>
+      <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="8" fontWeight="700" fontFamily="system-ui, sans-serif" letterSpacing="0.2">BAMBOO</text>
+    </svg>
+  )
+}
+
+export function HomebaseLogo({ size = 40, className = '' }: LogoProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <rect width="40" height="40" rx="8" fill="#FF6B00"/>
+      <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="7.5" fontWeight="700" fontFamily="system-ui, sans-serif" letterSpacing="0.2">HOMEBASE</text>
+    </svg>
+  )
+}
+
 const logoMap: Record<string, React.ComponentType<LogoProps>> = {
   'qbo-accounting': QuickBooksLogo,
   'qbo-payments': QuickBooksLogo,
   'qbd': QuickBooksLogo,
+  'qbo-time': QuickBooksLogo,
   'xero': XeroLogo,
   'gusto': GustoLogo,
   'adp': ADPLogo,
   'equifax': EquifaxLogo,
+  'bamboohr': BambooHRLogo,
+  'homebase': HomebaseLogo,
 }
 
 export function IntegrationLogo({ integrationId, size = 40 }: { integrationId: string; size?: number }) {

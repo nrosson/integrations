@@ -17,6 +17,7 @@ export interface IntegrationDef {
 }
 
 export const integrations: IntegrationDef[] = [
+  // Accounting
   {
     id: 'qbo-accounting',
     name: 'QuickBooks Online Accounting',
@@ -28,21 +29,6 @@ export const integrations: IntegrationDef[] = [
     status: 'available',
     externalIdLabel: 'Realm ID',
     registrationName: 'QuickBooks Accounting',
-    ctaLabel: 'Connect',
-    docsUrl: '#',
-  },
-  {
-    id: 'qbo-payments',
-    name: 'QuickBooks Online Payments',
-    provider: 'Intuit',
-    description: 'Process payroll payments and sync transaction records with QuickBooks Payments for unified cash flow visibility.',
-    category: 'Accounting',
-    logo: 'QB',
-    logoColor: 'bg-[#2CA01C] text-white',
-    status: 'available',
-    externalIdLabel: 'Realm ID',
-    registrationName: 'QuickBooks Payments',
-    ctaLabel: 'Connect',
     docsUrl: '#',
   },
   {
@@ -56,7 +42,7 @@ export const integrations: IntegrationDef[] = [
     status: 'available',
     externalIdLabel: 'Company File ID',
     registrationName: 'QuickBooks Desktop',
-    ctaLabel: 'Configure',
+    ctaLabel: 'Setup',
   },
   {
     id: 'xero',
@@ -70,12 +56,14 @@ export const integrations: IntegrationDef[] = [
     externalIdLabel: 'Tenant ID',
     registrationName: 'Xero',
   },
+
+  // Payroll
   {
     id: 'gusto',
     name: 'Gusto',
     provider: 'Gusto',
-    description: 'Sync employee benefits and HR data between Patriot and Gusto for unified workforce management.',
-    category: 'HR & Benefits',
+    description: 'Sync employee and payroll data between Patriot and Gusto for a unified payroll experience.',
+    category: 'Payroll',
     logo: 'GS',
     logoColor: 'bg-[#F45D48] text-white',
     status: 'available',
@@ -86,24 +74,64 @@ export const integrations: IntegrationDef[] = [
     id: 'adp',
     name: 'ADP Workforce Now',
     provider: 'ADP',
-    description: 'Connect payroll records and employee profiles with ADP Workforce Now.',
-    category: 'HR & Benefits',
+    description: 'Connect payroll records with ADP Workforce Now for streamlined payroll processing and reporting.',
+    category: 'Payroll',
     logo: 'AD',
     logoColor: 'bg-[#D42428] text-white',
     status: 'available',
     externalIdLabel: 'Company Code',
     registrationName: 'ADP',
   },
+
+  // HR
   {
     id: 'equifax',
     name: 'The Work Number® from Equifax',
     provider: 'Equifax',
-    description: "Automatically report employment and income data to Equifax's verification network.",
-    category: 'Verification',
+    description: "Automatically report employment and income data to Equifax's verification network for instant employment verification.",
+    category: 'HR',
     logo: 'EQ',
     logoColor: 'bg-[#003087] text-white',
     status: 'available',
     externalIdLabel: 'Employer ID',
     registrationName: 'Equifax',
+  },
+  {
+    id: 'bamboohr',
+    name: 'BambooHR',
+    provider: 'BambooHR',
+    description: 'Sync employee records and onboarding data between Patriot and BambooHR to keep HR and payroll in lockstep.',
+    category: 'HR',
+    logo: 'BH',
+    logoColor: 'bg-[#73C41D] text-white',
+    status: 'available',
+    externalIdLabel: 'Company Domain',
+    registrationName: 'BambooHR',
+  },
+
+  // Time & Attendance
+  {
+    id: 'qbo-time',
+    name: 'QuickBooks Time',
+    provider: 'Intuit',
+    description: 'Import employee time tracked in QuickBooks Time directly into Patriot Payroll to streamline timesheet processing.',
+    category: 'Time & Attendance',
+    logo: 'QB',
+    logoColor: 'bg-[#2CA01C] text-white',
+    status: 'available',
+    externalIdLabel: 'Realm ID',
+    registrationName: 'QuickBooks Time',
+  },
+  {
+    id: 'homebase',
+    name: 'Homebase',
+    provider: 'Homebase',
+    description: 'Pull approved timesheets and schedules from Homebase into Patriot for accurate, automatic payroll runs.',
+    category: 'Time & Attendance',
+    logo: 'HB',
+    logoColor: 'bg-[#FF6B00] text-white',
+    status: 'available',
+    externalIdLabel: 'Location ID',
+    registrationName: 'Homebase',
   },
 ]

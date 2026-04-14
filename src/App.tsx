@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { CareLayout } from './components/CareLayout'
-import { Dashboard } from './pages/Dashboard'
 import { Connections } from './pages/Connections'
 import { AvailableIntegrations } from './pages/AvailableIntegrations'
 import { AppRegistrations } from './pages/AppRegistrations'
@@ -15,7 +14,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Navigate to="/available" replace />} />
           <Route path="/connections" element={<Connections />} />
           <Route path="/available" element={<AvailableIntegrations />} />
           <Route path="/registrations" element={<AppRegistrations />} />

@@ -1,15 +1,21 @@
 import { useState } from 'react'
 import { Search } from 'lucide-react'
-import { connections, type ConnectionStatus } from '../data/mock'
+import { connections as initialConnections, type Connection, type ConnectionStatus } from '../data/mock'
 import { StatusBadge } from '../components/StatusBadge'
 
 const ALL_STATUSES: ConnectionStatus[] = ['Active', 'Disconnected', 'Revoked', 'Reconnect', 'Failed']
 
 export function Connections() {
+  const [items, setItems] = useState<Connection[]>(initialConnections)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<ConnectionStatus | 'All'>('All')
 
-  const filtered = connections.filter(c => {
+  function disconnect(id: string) {
+    if (!confirm('Disconnect this connection? The customer will need to re-authorize to reconnect.')) return
+    setItems(prev => prev.map(c => c.id === id ? { ...c, status: 'Disconnected' } : c))
+  }
+
+  const filtered = items.filter(c => {
     const matchesSearch =
       c.companyName.toLowerCase().includes(search.toLowerCase()) ||
       String(c.companyId).includes(search) ||
@@ -57,12 +63,13 @@ export function Connections() {
               <th className="text-left text-xs font-semibold text-gray-500 px-5 py-3">Status</th>
               <th className="text-left text-xs font-semibold text-gray-500 px-5 py-3">Realm ID</th>
               <th className="text-left text-xs font-semibold text-gray-500 px-5 py-3">Last Refreshed</th>
+              <th className="px-5 py-3" />
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-5 py-10 text-center text-sm text-gray-400">No connections match your filters.</td>
+                <td colSpan={6} className="px-5 py-10 text-center text-sm text-gray-400">No connections match your filters.</td>
               </tr>
             ) : (
               filtered.map(conn => (
@@ -84,13 +91,23 @@ export function Connections() {
                   <td className="px-5 py-3.5 text-gray-500 text-xs">
                     {new Date(conn.lastRefreshed).toLocaleString()}
                   </td>
+                  <td className="px-5 py-3.5">
+                    {conn.status !== 'Disconnected' && (
+                      <button
+                        onClick={() => disconnect(conn.id)}
+                        className="text-xs text-red-500 border border-red-200 px-2.5 py-1 rounded hover:bg-red-50 transition-colors whitespace-nowrap"
+                      >
+                        Disconnect
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
         <div className="px-5 py-2.5 border-t border-gray-100 text-xs text-gray-400">
-          Showing {filtered.length} of {connections.length} connections
+          Showing {filtered.length} of {items.length} connections
         </div>
       </div>
     </div>

@@ -19,10 +19,10 @@ export function CareLayout() {
         {/* Page content */}
         <div className="flex-1 bg-gray-50 px-8 py-7 flex flex-col">
           <div className="flex items-center gap-3 mb-5">
-            <Link to="/connections" className="text-sm text-gray-400 hover:text-purple-600 transition-colors">
+            <Link to="/connections" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">
               ← Connected Apps
             </Link>
-            <span className="text-gray-300">/</span>
+            <span className="text-gray-600">/</span>
             <h1 className="text-2xl font-semibold text-gray-900">CARE</h1>
           </div>
 
@@ -36,7 +36,7 @@ export function CareLayout() {
                   `px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors whitespace-nowrap ${
                     isActive
                       ? 'border-purple-600 text-purple-700'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      : 'border-transparent text-gray-600 hover:text-gray-700 hover:border-gray-300'
                   }`
                 }
               >

@@ -32,11 +32,11 @@ export function AppRegistrations() {
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <p className="font-medium text-gray-800">{reg.name}</p>
                   <RegistrationStatusBadge status={reg.status} />
-                  <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${reg.environment === 'Production' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-gray-100 text-gray-500'}`}>
+                  <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${reg.environment === 'Production' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-gray-100 text-gray-600'}`}>
                     {reg.environment}
                   </span>
                 </div>
-                <p className="text-xs text-gray-400 mt-0.5">{reg.provider} · {reg.connectionCount} connection{reg.connectionCount !== 1 ? 's' : ''} · Created {reg.createdAt}</p>
+                <p className="text-xs text-gray-600 mt-0.5">{reg.provider} · {reg.connectionCount} connection{reg.connectionCount !== 1 ? 's' : ''} · Created {reg.createdAt}</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <button
@@ -55,7 +55,7 @@ export function AppRegistrations() {
                 </button>
                 <button
                   onClick={() => setExpanded(expanded === reg.id ? null : reg.id)}
-                  className="p-1.5 text-gray-400 hover:text-gray-600"
+                  className="p-1.5 text-gray-600 hover:text-gray-600"
                 >
                   {expanded === reg.id ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
                 </button>
@@ -66,7 +66,7 @@ export function AppRegistrations() {
               <div className="border-t border-gray-100 px-5 py-4 bg-gray-50">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Scopes</p>
+                    <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Scopes</p>
                     <div className="flex flex-wrap gap-1.5">
                       {reg.scopes.map(s => (
                         <span key={s} className="font-mono text-xs bg-white border border-gray-200 text-gray-600 px-2 py-0.5 rounded">{s}</span>
@@ -74,9 +74,9 @@ export function AppRegistrations() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Client Secret</p>
-                    <p className="font-mono text-xs text-gray-400">••••••••••••••••••••••••••••••••</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Encrypted at rest · AES-256-GCM</p>
+                    <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Client Secret</p>
+                    <p className="font-mono text-xs text-gray-600">••••••••••••••••••••••••••••••••</p>
+                    <p className="text-xs text-gray-600 mt-0.5">Encrypted at rest · AES-256-GCM</p>
                   </div>
                 </div>
               </div>

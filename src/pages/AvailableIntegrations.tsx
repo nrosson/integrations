@@ -16,7 +16,7 @@ export function AvailableIntegrations() {
     <div>
       {categories.map(category => (
         <div key={category} className="mb-8">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">{category}</h2>
+          <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">{category}</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
             {integrations.filter(i => i.category === category).map(integration => {
               const connected = isConnected(integration.registrationName)
@@ -44,18 +44,18 @@ export function AvailableIntegrations() {
                           </span>
                         )}
                         {comingSoon && (
-                          <span className="flex items-center gap-1 text-xs text-gray-400 font-medium">
+                          <span className="flex items-center gap-1 text-xs text-gray-600 font-medium">
                             <Clock size={11} />
                             Coming soon
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-gray-400">{integration.provider}</p>
+                      <p className="text-xs text-gray-600">{integration.provider}</p>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs text-gray-500 leading-relaxed flex-1">{integration.description}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed flex-1">{integration.description}</p>
 
                   {/* Actions */}
                   {!comingSoon && (
@@ -75,7 +75,7 @@ export function AvailableIntegrations() {
                       {integration.docsUrl && (
                         <a
                           href={integration.docsUrl}
-                          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-500 rounded hover:bg-gray-50 transition-colors"
+                          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium border border-gray-300 text-gray-600 rounded hover:bg-gray-50 transition-colors"
                         >
                           <ExternalLink size={11} />
                           Docs

@@ -32,7 +32,7 @@ export function QBOAccountingSlot() {
     <div>
       <div className="mb-4">
         <h3 className="text-sm font-semibold text-gray-800">Account Mapping</h3>
-        <p className="text-xs text-gray-500 mt-0.5">
+        <p className="text-xs text-gray-600 mt-0.5">
           Map each Patriot payroll category to the corresponding account in your QuickBooks Online chart of accounts.
           These mappings determine where journal entries are posted when payroll runs sync.
         </p>
@@ -42,8 +42,8 @@ export function QBOAccountingSlot() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="text-left text-xs font-semibold text-gray-500 px-4 py-2.5 w-1/2">Patriot Category</th>
-              <th className="text-left text-xs font-semibold text-gray-500 px-4 py-2.5 w-1/2">QuickBooks Account</th>
+              <th className="text-left text-xs font-semibold text-gray-600 px-4 py-2.5 w-1/2">Patriot Category</th>
+              <th className="text-left text-xs font-semibold text-gray-600 px-4 py-2.5 w-1/2">QuickBooks Account</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">

@@ -2,7 +2,7 @@ import type { ConnectionStatus } from '../data/mock'
 
 const styles: Record<ConnectionStatus, string> = {
   Active: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400',
-  Disconnected: 'bg-slate-100 text-slate-600 dark:bg-slate-700/50 dark:text-slate-400',
+  Disconnected: 'bg-slate-200 text-slate-800 dark:bg-slate-700/50 dark:text-slate-200',
   Revoked: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
   Reconnect: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
   Failed: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',

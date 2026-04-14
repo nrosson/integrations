@@ -20,7 +20,7 @@ export function Layout() {
           <div className="flex justify-end mt-8">
             <Link
               to="/care"
-              className="text-xs font-semibold tracking-widest text-gray-400 hover:text-purple-600 transition-colors uppercase"
+              className="text-xs font-semibold tracking-widest text-gray-600 hover:text-purple-600 transition-colors uppercase"
             >
               CARE
             </Link>

@@ -44,10 +44,10 @@ export function PSSidebar() {
             }`}
           >
             <span className="flex items-center gap-3">
-              <Icon size={16} className={active ? 'text-purple-600' : 'text-gray-400 group-hover:text-gray-500'} />
+              <Icon size={16} className={active ? 'text-purple-600' : 'text-gray-600 group-hover:text-gray-600'} />
               {label}
             </span>
-            {expandable && <ChevronRight size={14} className="text-gray-400" />}
+            {expandable && <ChevronRight size={14} className="text-gray-600" />}
           </button>
         ))}
       </nav>

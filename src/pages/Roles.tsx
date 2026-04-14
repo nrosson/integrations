@@ -22,9 +22,9 @@ export function Roles() {
           >
             <div className="flex items-center gap-1.5">
               <p className={`text-sm font-medium ${selected === r.id ? 'text-purple-700' : 'text-gray-700'}`}>{r.name}</p>
-              {r.isBuiltIn && <Lock size={10} className="text-gray-400" />}
+              {r.isBuiltIn && <Lock size={10} className="text-gray-600" />}
             </div>
-            <p className="text-xs text-gray-400 mt-0.5">{r.userCount} user{r.userCount !== 1 ? 's' : ''}</p>
+            <p className="text-xs text-gray-600 mt-0.5">{r.userCount} user{r.userCount !== 1 ? 's' : ''}</p>
           </button>
         ))}
       </div>
@@ -36,14 +36,14 @@ export function Roles() {
             <div className="flex items-center gap-2">
               <h2 className="text-base font-semibold text-gray-800">{role.name}</h2>
               {role.isBuiltIn && (
-                <span className="text-xs px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 flex items-center gap-1">
+                <span className="text-xs px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 flex items-center gap-1">
                   <Lock size={9} /> Built-in
                 </span>
               )}
             </div>
-            <p className="text-sm text-gray-500 mt-0.5">{role.description}</p>
+            <p className="text-sm text-gray-600 mt-0.5">{role.description}</p>
           </div>
-          <span className="text-sm text-gray-400">{role.permissions.length}/{ALL_PERMISSIONS.length} permissions</span>
+          <span className="text-sm text-gray-600">{role.permissions.length}/{ALL_PERMISSIONS.length} permissions</span>
         </div>
 
         <div className="grid grid-cols-2 gap-1">
